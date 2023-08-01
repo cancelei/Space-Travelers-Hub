@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import '../styles/navigation.module.css';
 
 function NavBar() {
   return (
@@ -9,13 +10,13 @@ function NavBar() {
         <h1>Space Travelers Hub</h1>
         <ul>
           <li>
-            <Link to="/">Rockets</Link>
+            <NavLink to="/" activeclassname="active-link">Rockets</NavLink>
           </li>
           <li>
-            <Link to="/missions">Missions</Link>
+            <NavLink to="/missions" activeclassname="active-link">Missions</NavLink>
           </li>
           <li>
-            <Link to="/myprofile">My profile</Link>
+            <NavLink to="/myprofile" activeclassname="active-link">My profile</NavLink>
           </li>
         </ul>
       </div>
