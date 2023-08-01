@@ -19,7 +19,7 @@ function Rockets() {
 
   return (
     <div>
-      <h1>Cohetes</h1>
+      <h1>Rockets</h1>
       <Row xs={1} md={2} lg={3} className="g-4">
         {rockets.map((rocket) => (
           <Col key={rocket.rocket_id}>
