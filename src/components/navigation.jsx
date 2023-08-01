@@ -16,10 +16,10 @@ function NavBar() {
             <NavLink to="/missions" activeClassname="active-link">Missions</NavLink>
           </li>
           <li>
-            <NavLink to="/myprofile" activeClassname="active-link">My profile</NavLink>
+            <NavLink to="/dragons" activeClassName="active-link">Dragons</NavLink>
           </li>
           <li>
-            <NavLink to="/dragons" activeClassName="active-link">Dragons</NavLink>
+            <NavLink to="/myprofile" activeClassname="active-link">My profile</NavLink>
           </li>
 
         </ul>
