@@ -5,7 +5,6 @@ import axios from 'axios';
 export const fetchMissions = createAsyncThunk(
   'missions/fetchMissions',
   async () => {
-    console.log('fetchMissions async action called');
     const response = await axios.get('https://api.spacexdata.com/v3/missions');
     return response.data.map((mission) => ({
       mission_id: mission.mission_id,

@@ -5,7 +5,6 @@ import axios from 'axios';
 export const fetchRockets = createAsyncThunk(
   'rockets/fetchRockets',
   async () => {
-    console.log('fetchRockets async action called');
     const response = await axios.get('https://api.spacexdata.com/v4/rockets');
     return response.data.map((rocket) => ({
       rocket_id: rocket.id,
