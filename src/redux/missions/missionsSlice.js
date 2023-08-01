@@ -5,6 +5,7 @@ import axios from 'axios';
 export const fetchMissions = createAsyncThunk(
   'missions/fetchMissions',
   async () => {
+    console.log('fetchMissions async action called');
     const response = await axios.get('https://api.spacexdata.com/v3/missions');
     return response.data.map((mission) => ({
       mission_id: mission.mission_id,
@@ -17,10 +18,16 @@ export const fetchMissions = createAsyncThunk(
 // Missions slice
 export const missionsSlice = createSlice({
   name: 'missions',
-  initialState: [],
+  initialState: { missions: [], loading: false },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchMissions.fulfilled, (state, action) => action.payload);
+    builder.addCase(fetchMissions.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchMissions.fulfilled, (state, action) => {
+      state.missions = action.payload;
+      state.loading = false;
+    });
   },
 });
 
