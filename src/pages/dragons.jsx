@@ -17,7 +17,7 @@ function Dragons() {
 
   return (
     <div>
-      <h1>Dragones</h1>
+      <h1>Dragons</h1>
       <Row xs={1} md={2} lg={3} className="g-4">
         {dragons.map((dragon) => (
           <Col key={dragon.dragon_id}>
