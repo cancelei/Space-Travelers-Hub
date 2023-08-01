@@ -5,6 +5,7 @@ import NavBar from './components/navigation';
 import Missions from './pages/missions';
 import MyProfile from './pages/myProfile';
 import Rockets from './pages/rockets';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Dragons from './pages/dragons';
 
 function App() {
