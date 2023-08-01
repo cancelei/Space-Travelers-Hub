@@ -16,11 +16,11 @@ export const fetchDragons = createAsyncThunk(
 
 export const dragonsSlice = createSlice({
   name: 'dragons',
-  initialState: { list: [] }, // Cambiado para ser un objeto con una propiedad list
+  initialState: { list: [] },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchDragons.fulfilled, (state, action) => {
-      state.list = action.payload; // Actualizar la propiedad list con los dragones
+      state.list = action.payload;
     });
   },
 });

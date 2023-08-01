@@ -10,12 +10,14 @@ function Dragons() {
   const dragons = useSelector((state) => state.dragons.list);
 
   useEffect(() => {
-    dispatch(fetchDragons());
-  }, [dispatch]);
+    if (dragons.length === 0) { // Comprobar si ya existen dragones en el estado
+      dispatch(fetchDragons());
+    }
+  }, [dispatch, dragons]);
 
   return (
     <div>
-      <h1>Dragons</h1>
+      <h1>Dragones</h1>
       <Row xs={1} md={2} lg={3} className="g-4">
         {dragons.map((dragon) => (
           <Col key={dragon.dragon_id}>
