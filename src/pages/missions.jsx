@@ -1,18 +1,31 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { fetchMissions } from '../redux/missions/missionsSlice';
+import Loader from '../components/Loader';
+import MissionList from '../components/MissionList';
 
-function Missions() {
+const Missions = () => {
   const dispatch = useDispatch();
-  const missions = useSelector((state) => state.missions);
 
-  useEffect(() => {
-    dispatch(fetchMissions());
-  }, [dispatch]);
+  const { missions, isLoading } = useSelector((state) => state.missions);
 
-  console.log(missions);
+  React.useEffect(() => {
+    if (!isLoading && !missions.length) {
+      dispatch(fetchMissions());
+    }
+  }, [dispatch, missions, isLoading]);
 
-  // Render missions...
-}
+  return (
+    <div>
+      <h1>Missions</h1>
+
+      {isLoading && <Loader />}
+
+      {!isLoading && <MissionList missions={missions} />}
+
+    </div>
+  );
+};
 
 export default Missions;
