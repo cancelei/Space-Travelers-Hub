@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Card, Button, Row, Col,
-} from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
 import { fetchDragons } from '../redux/dragons/dragonsSlice';
 
 function Dragons() {
@@ -16,23 +14,27 @@ function Dragons() {
   }, [dispatch, dragons]);
 
   return (
-    <div>
+    <Container>
       <h1>Dragons</h1>
-      <Row xs={1} md={2} lg={3} className="g-4">
-        {dragons.map((dragon) => (
-          <Col key={dragon.dragon_id}>
-            <Card>
-              <Card.Img variant="top" src={dragon.flickr_images[0]} alt={`Imagen de ${dragon.dragon_name}`} />
-              <Card.Body>
-                <Card.Title>{dragon.dragon_name}</Card.Title>
-                <Card.Text>{dragon.description}</Card.Text>
-                <Button>More Details</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dragons.map((dragon) => (
+            <tr key={dragon.dragon_id}>
+              <td><img src={dragon.flickr_images[0]} alt={`Imagen de ${dragon.dragon_name}`} width="100" /></td>
+              <td>{dragon.dragon_name}</td>
+              <td>{dragon.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
   );
 }
 
