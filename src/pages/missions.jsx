@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchMissions } from '../redux/missions/missionsSlice';
-import Loader from '../components/Loader';
+import Loader from '../components/loader';
 import MissionList from '../components/MissionList';
 
 const Missions = () => {
