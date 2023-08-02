@@ -28,12 +28,29 @@ const Rocket = ({ rocket }) => {
           <Col md={8}>
             <Card.Body>
               <Card.Title>{rocket.rocket_name}</Card.Title>
-              {rocket.reserved && <p style={{ color: 'green' }}>Reserved</p>}
-              <Card.Text>{rocket.description}</Card.Text>
+              <Card.Text>
+                {rocket.reserved && <span className="btn btn-primary" style={{ padding: '2px 8px', marginRight: '5px' }}>Reserved</span>}
+                {rocket.description}
+              </Card.Text>
               {rocket.reserved ? (
-                <Button onClick={handleCancelReserveRocket}>Cancel Reservation</Button>
+                <Button
+                  variant="primary"
+                  style={{
+                    background: 'white',
+                    color: 'gray',
+                    border: '1px solid gray',
+                  }}
+                  onClick={handleCancelReserveRocket}
+                >
+                  Cancel Reservation
+                </Button>
               ) : (
-                <Button onClick={handleReserveRocket}>Reserve Rocket</Button>
+                <Button
+                  variant="primary"
+                  onClick={handleReserveRocket}
+                >
+                  Reserve Rocket
+                </Button>
               )}
             </Card.Body>
           </Col>
