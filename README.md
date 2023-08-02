@@ -31,6 +31,9 @@
 Web Page connected with the real live data from the SpaceX API, to provide commercial and scientific space travel services, users can book rockets and join selected space missions.
 
 ## 🛠 Built With:<a name="built-with"></a>
+- React
+- Redux
+- Space X - API
 
 ### Tech Stack <a name="tech-stack"></a>
 
