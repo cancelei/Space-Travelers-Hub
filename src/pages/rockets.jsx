@@ -17,7 +17,11 @@ const Rocket = ({ rocket, onSelectRocket }) => (
           <Card.Body>
             <Card.Title>{rocket.rocket_name}</Card.Title>
             <Card.Text>{rocket.description}</Card.Text>
-            <Button onClick={() => onSelectRocket(rocket)}>Reserve Rocket</Button>
+            {rocket.reserved ? (
+              <p style={{ color: 'green' }}>Reserved</p>
+            ) : (
+              <Button onClick={() => onSelectRocket(rocket)}>Reserve Rocket</Button>
+            )}
           </Card.Body>
         </Col>
       </Row>
@@ -31,6 +35,7 @@ Rocket.propTypes = {
     rocket_name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     flickr_images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    reserved: PropTypes.bool.isRequired,
   }).isRequired,
   onSelectRocket: PropTypes.func.isRequired,
 };
