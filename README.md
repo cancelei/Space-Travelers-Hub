@@ -30,7 +30,7 @@
 # 📖 SPACE TRAVELER'S HUB<a name="about-project"></a>
 Web Page connected with the real live data from the SpaceX API, to provide commercial and scientific space travel services, users can book rockets and join selected space missions.
 
-## 🛠 Built With Love and Passion<a name="built-with"></a>
+## 🛠 Built With:<a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
