@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Container, Row, Col, Card, Button,
 } from 'react-bootstrap';
+import Badge from 'react-bootstrap/Badge';
 import PropTypes from 'prop-types';
 import { fetchRockets, setSelectedRocket, cancelReserveRocket } from '../redux/rockets/rocketsSlice';
+import '../styles/rockets.css';
 
 const Rocket = ({ rocket }) => {
   const dispatch = useDispatch();
@@ -19,17 +21,17 @@ const Rocket = ({ rocket }) => {
   };
 
   return (
-    <Card style={{ width: '100%', border: 'none' }}>
-      <Container>
-        <Row>
+    <Card className="rocket-card">
+      <Container className="card-container">
+        <Row className="row">
           <Col md={4} style={{ marginBottom: '2%' }}>
-            <Card.Img variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} style={{ width: '45vh', borderRadius: '0' }} />
+            <Card.Img className="rocket-image" variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} />
           </Col>
           <Col md={8}>
-            <Card.Body>
-              <Card.Title>{rocket.rocket_name}</Card.Title>
+            <Card.Body className="rocket-content">
+              <Card.Title className="rocket-title">{rocket.rocket_name}</Card.Title>
               <Card.Text>
-                {rocket.reserved && <span className="btn btn-primary" style={{ padding: '1px 1px', marginRight: '5px' }}>Reserved</span>}
+                {rocket.reserved && <Badge bg="primary" className="">Reserved</Badge>}
                 {rocket.description}
               </Card.Text>
               {rocket.reserved ? (
