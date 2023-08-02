@@ -29,7 +29,7 @@ function Dragons() {
         <thead>
           <tr>
             <th>Image</th>
-            <th>Name</th>
+            <th style={{ width: '8%' }}>Name</th>
             <th>Description</th>
             <th>Action</th>
           </tr>
@@ -50,6 +50,7 @@ function Dragons() {
         </tbody>
       </Table>
     </Container>
+
   );
 }
 
