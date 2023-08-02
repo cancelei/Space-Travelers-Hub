@@ -1,8 +1,63 @@
-// src/pages/dragons.jsx
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table, Container, Button } from 'react-bootstrap';
+import {
+  Container, Row, Col, Card, Button, Badge,
+} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { fetchDragons, reserveDragon, cancelDragonReservation } from '../redux/dragons/dragonsSlice';
+import '../styles/dragons.css';
+
+const Dragon = ({ dragon }) => {
+  const dispatch = useDispatch();
+
+  const handleReserveDragon = () => {
+    dispatch(reserveDragon(dragon.dragonId));
+  };
+
+  const handleCancelReserveDragon = () => {
+    dispatch(cancelDragonReservation(dragon.dragonId));
+  };
+
+  return (
+    <Card className="dragon-card">
+      <Container className="card-container">
+        <Row className="row">
+          <Col md={4} style={{ marginBottom: '2%' }}>
+            <Card.Img className="dragon-image" variant="top" src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} />
+          </Col>
+          <Col md={8}>
+            <Card.Body className="dragon-content">
+              <Card.Title className="dragon-title">{dragon.dragonName}</Card.Title>
+              <Card.Text>
+                {dragon.reserved && <Badge bg="primary" className="">Reserved</Badge>}
+                {dragon.description}
+              </Card.Text>
+              {dragon.reserved ? (
+                <Button variant="primary" style={{ background: 'white', color: 'gray', border: '1px solid gray' }} onClick={handleCancelReserveDragon}>
+                  Cancel Reservation
+                </Button>
+              ) : (
+                <Button variant="primary" onClick={handleReserveDragon}>
+                  Reserve Dragon
+                </Button>
+              )}
+            </Card.Body>
+          </Col>
+        </Row>
+      </Container>
+    </Card>
+  );
+};
+
+Dragon.propTypes = {
+  dragon: PropTypes.shape({
+    dragonId: PropTypes.string.isRequired,
+    dragonName: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    flickrImages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    reserved: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 function Dragons() {
   const dispatch = useDispatch();
@@ -14,44 +69,12 @@ function Dragons() {
     }
   }, [dispatch, dragons]);
 
-  const handleAction = (id, reserved) => {
-    if (reserved) {
-      dispatch(cancelDragonReservation(id));
-    } else {
-      dispatch(reserveDragon(id));
-    }
-  };
-
   return (
-    <Container>
-      <h1>Dragons</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Dragons</th>
-            <th style={{ width: '8%' }}>Name</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {dragons.map((dragon) => (
-            <tr key={dragon.dragonId}>
-              <td><img src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} width="250" /></td>
-              <td>{dragon.dragonName}</td>
-              <td>{dragon.description}</td>
-              <td style={{ textAlign: 'center' }}>
-                {dragon.reserved ? <p style={{ color: 'green' }}>Reserved</p> : null}
-                <Button variant={dragon.reserved ? 'secondary' : 'primary'} onClick={() => handleAction(dragon.dragonId, dragon.reserved)} style={{ width: '120px', margin: '5px', marginTop: '175%' }}>
-                  {dragon.reserved ? 'Cancel' : 'Reserve'}
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
-
+    <div>
+      {dragons.map((dragon) => (
+        <Dragon key={dragon.dragonId} dragon={dragon} />
+      ))}
+    </div>
   );
 }
 
