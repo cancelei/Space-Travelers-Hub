@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
+// rocketsSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async action to fetch rockets data
 export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
   const response = await axios.get('https://api.spacexdata.com/v4/rockets');
   return response.data.map((rocket) => ({
@@ -25,14 +26,10 @@ export const rocketsSlice = createSlice({
     builder.addCase(fetchRockets.fulfilled, (state, action) => action.payload);
     builder.addCase(setSelectedRocket.fulfilled, (state, action) => {
       const selectedRocketId = action.payload.rocket_id;
-
-      // eslint-disable-next-line max-len
       return state.map((rocket) => (rocket.rocket_id === selectedRocketId ? { ...rocket, reserved: true } : rocket));
     });
     builder.addCase(cancelReserveRocket.fulfilled, (state, action) => {
       const rocketId = action.payload;
-
-      // eslint-disable-next-line max-len
       return state.map((rocket) => (rocket.rocket_id === rocketId ? { ...rocket, reserved: false } : rocket));
     });
   },
