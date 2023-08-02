@@ -43,11 +43,12 @@ function Dragons() {
               <td>
                 {dragon.reserved ? (
                   <>
-                    <Button variant="success" disabled>Reserved</Button>
-                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)}>Cancel</Button>
+                    <Button variant="success" disabled style={{ width: '120px' }}>Reserved</Button>
+                    {' '}
+                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)} style={{ width: '120px' }}>Cancel</Button>
                   </>
                 ) : (
-                  <Button onClick={() => handleReserve(dragon.dragonId)}>Reserve Dragon</Button>
+                  <Button onClick={() => handleReserve(dragon.dragonId)} style={{ width: '120px' }}>Reserve</Button>
                 )}
               </td>
             </tr>
