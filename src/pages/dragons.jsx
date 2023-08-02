@@ -40,15 +40,14 @@ function Dragons() {
               <td><img src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} width="100" /></td>
               <td>{dragon.dragonName}</td>
               <td>{dragon.description}</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
                 {dragon.reserved ? (
                   <>
-                    <Button variant="success" disabled style={{ width: '120px' }}>Reserved</Button>
-                    {' '}
-                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)} style={{ width: '120px' }}>Cancel</Button>
+                    <Button variant="success" disabled style={{ width: '120px', margin: '5px' }}>Reserved</Button>
+                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)} style={{ width: '120px', margin: '5px' }}>Cancel</Button>
                   </>
                 ) : (
-                  <Button onClick={() => handleReserve(dragon.dragonId)} style={{ width: '120px' }}>Reserve</Button>
+                  <Button onClick={() => handleReserve(dragon.dragonId)} style={{ width: '120px', margin: '5px' }}>Reserve</Button>
                 )}
               </td>
             </tr>
