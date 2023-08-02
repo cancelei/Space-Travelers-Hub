@@ -24,11 +24,10 @@ function Dragons() {
 
   return (
     <Container>
-      <h1>Dragons</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Image</th>
+            <th>Dragons</th>
             <th style={{ width: '8%' }}>Name</th>
             <th>Description</th>
             <th>Action</th>
