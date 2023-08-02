@@ -20,10 +20,10 @@ function NavBar() {
           <li>
             <NavLink to="/dragons" className="navlink300" activeclassname="active-link">Dragons</NavLink>
           </li>
+          <span className="separator">|</span>
           <li>
-            <NavLink to="/myprofile" className="navlink300" activeclassname="active-link">My profile</NavLink>
+            <NavLink to="/myprofile" className="navlink300" activeclassname="active-link">My Profile</NavLink>
           </li>
-
         </ul>
       </div>
     </nav>
