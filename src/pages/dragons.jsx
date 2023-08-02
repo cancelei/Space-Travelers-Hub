@@ -14,12 +14,12 @@ function Dragons() {
     }
   }, [dispatch, dragons]);
 
-  const handleReserve = (id) => {
-    dispatch(reserveDragon(id));
-  };
-
-  const handleCancelReservation = (id) => {
-    dispatch(cancelDragonReservation(id));
+  const handleAction = (id, reserved) => {
+    if (reserved) {
+      dispatch(cancelDragonReservation(id));
+    } else {
+      dispatch(reserveDragon(id));
+    }
   };
 
   return (
@@ -41,14 +41,9 @@ function Dragons() {
               <td>{dragon.dragonName}</td>
               <td>{dragon.description}</td>
               <td style={{ textAlign: 'center' }}>
-                {dragon.reserved ? (
-                  <>
-                    <Button variant="success" disabled style={{ width: '120px', margin: '5px' }}>Reserved</Button>
-                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)} style={{ width: '120px', margin: '5px' }}>Cancel</Button>
-                  </>
-                ) : (
-                  <Button onClick={() => handleReserve(dragon.dragonId)} style={{ width: '120px', margin: '5px' }}>Reserve</Button>
-                )}
+                <Button variant={dragon.reserved ? 'secondary' : 'primary'} onClick={() => handleAction(dragon.dragonId, dragon.reserved)} style={{ width: '120px', margin: '5px', marginTop: '25%' }}>
+                  {dragon.reserved ? 'Cancel' : 'Reserve'}
+                </Button>
               </td>
             </tr>
           ))}
