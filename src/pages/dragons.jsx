@@ -1,7 +1,8 @@
+// src/pages/dragons.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Container, Button } from 'react-bootstrap';
-import { fetchDragons, reserveDragon } from '../redux/dragons/dragonsSlice';
+import { fetchDragons, reserveDragon, cancelDragonReservation } from '../redux/dragons/dragonsSlice';
 
 function Dragons() {
   const dispatch = useDispatch();
@@ -13,8 +14,12 @@ function Dragons() {
     }
   }, [dispatch, dragons]);
 
-  const handleReserveDragon = (dragonId) => {
-    dispatch(reserveDragon(dragonId));
+  const handleReserve = (id) => {
+    dispatch(reserveDragon(id));
+  };
+
+  const handleCancelReservation = (id) => {
+    dispatch(cancelDragonReservation(id));
   };
 
   return (
@@ -31,14 +36,19 @@ function Dragons() {
         </thead>
         <tbody>
           {dragons.map((dragon) => (
-            <tr key={dragon.dragon_id}>
-              <td><img src={dragon.flickr_images[0]} alt={`Imagen de ${dragon.dragon_name}`} width="100" /></td>
-              <td>{dragon.dragon_name}</td>
+            <tr key={dragon.dragonId}>
+              <td><img src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} width="100" /></td>
+              <td>{dragon.dragonName}</td>
               <td>{dragon.description}</td>
               <td>
-                <Button onClick={() => handleReserveDragon(dragon.dragon_id)}>
-                  {dragon.reserved ? 'Reserved' : 'Reserve Dragon'}
-                </Button>
+                {dragon.reserved ? (
+                  <>
+                    <Button variant="success" disabled>Reserved</Button>
+                    <Button variant="secondary" onClick={() => handleCancelReservation(dragon.dragonId)}>Cancel</Button>
+                  </>
+                ) : (
+                  <Button onClick={() => handleReserve(dragon.dragonId)}>Reserve Dragon</Button>
+                )}
               </td>
             </tr>
           ))}
