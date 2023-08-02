@@ -2,7 +2,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>Bookstore</b></h3>
+  <h3><b>SPACE TRAVELER'S HUB</b></h3>
 
 </div>
 
@@ -28,8 +28,8 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 React/Redux Bookstore<a name="about-project"></a>
-This is react redux project that includes a bookstore that stores the progress of an user's books. It uses redux to manage the state.
+# 📖 React/Redux SPA<a name="about-project"></a>
+This is a group project built to help potential space traveler's to save and compare their past and future space travels. 
 
 ## 🛠 Built With Love and Passion<a name="built-with"></a>
 
@@ -63,7 +63,13 @@ This is react redux project that includes a bookstore that stores the progress o
 
 ### Key Features <a name="key-features"></a>
 
-Add Features here
+- UI Layout with Logo and API data in text and image format.
+- User can add rockets to their list of rockets.
+- User can remove rockets from their list of rockets.
+- User can add missions to their list of missions.
+- User can remove missions from their list of missions.
+- User can add dragons to their list of dragons.
+- User can remove dragons from their list of dragons.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,7 +128,16 @@ N/A -->
 - LinkedIn: [LinkedIn](https://linkedin.com/in/gbannwart)
 
 
-Add Author here
+👤 **Author 2**
+
+- GitHub: [@githubhandle](
+- LinkedIn: [LinkedIn](https://linkedin.com/in/)
+
+👤 **Author 3**
+
+- GitHub: [@githubhandle](
+- LinkedIn: [LinkedIn](https://linkedin.com/in/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,13 +145,17 @@ Add Author here
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- (Add future here)
+- Implement LocalStorage to save user's data.
+- Implement a login system.
+- Implement a user profile page.
+- Implement a user dashboard.
+- Implement a user's past and future space travels.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome! Please consider this issue link: [Project Issues](https://github.com/cancelei/bookstore/issues)
+Contributions, issues, and feature requests are welcome! Please consider this issue link: [Project Issues](https://github.com/cancelei/Space-Travelers-Hub/issues)
 
 ## ⭐️ Show your support <a name="support"></a>
 

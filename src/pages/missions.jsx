@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchMissions } from '../redux/missions/missionsSlice';
-import Loader from '../components/Loader';
+// import Loader from '../components/Loader';
 import MissionList from '../components/MissionList';
 
 const Missions = () => {
@@ -19,7 +19,7 @@ const Missions = () => {
   return (
     <div>
 
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
 
       {!isLoading && <MissionList missions={missions} />}
 

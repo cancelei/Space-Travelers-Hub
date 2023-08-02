@@ -1,0 +1,21 @@
+.rocket-card {
+  border: none;
+}
+
+.rocket-image {
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.rocket-content {
+  padding: 0;
+}
+
+.card-container {
+  margin-left: 5%;
+  width: 100%;
+}
+
+.rocket-title {
+  font-size: 23px;
+}
