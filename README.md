@@ -2,7 +2,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>SPACE TRAVELER'S HUB</b></h3>
+  <h3><b> 🚀 SPACE TRAVELER'S HUB 🚀 </b></h3>
 
 </div>
 
@@ -12,7 +12,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -28,8 +27,8 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 React/Redux SPA<a name="about-project"></a>
-This is a group project built to help potential space traveler's to save and compare their past and future space travels. 
+# 📖 SPACE TRAVELER'S HUB<a name="about-project"></a>
+Web Page connected with the real live data from the SpaceX API, to provide commercial and scientific space travel services, users can book rockets and join selected space missions.
 
 ## 🛠 Built With Love and Passion<a name="built-with"></a>
 
@@ -46,20 +45,6 @@ This is a group project built to help potential space traveler's to save and com
 
   </ul>
 </details>
-
-<!-- <details>
-  <summary>Server</summary>
-  <ul>
-    <li>N/A</li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li>N/A</li>
-  </ul>
-</details> -->
 
 ### Key Features <a name="key-features"></a>
 
@@ -128,15 +113,18 @@ N/A -->
 - LinkedIn: [LinkedIn](https://linkedin.com/in/gbannwart)
 
 
-👤 **Author 2**
+👤 **Rudi Carrillo**
 
-- GitHub: [@githubhandle](
-- LinkedIn: [LinkedIn](https://linkedin.com/in/)
+- GitHub: [@rudicarrilloypr](https://github.com/rudicarrilloypr)
+- Twitter: [@__rudicarrillo](https://twitter.com/__rudicarrillo)
+- LinkedIn: [Rudi Carrillo](https://www.linkedin.com/in/rudi-carrillo/)
+- Instagram: [@__rudicarrillo](https://www.instagram.com/_rudicarrillo/)
 
-👤 **Author 3**
+👤 **Ricardo Martínez**
 
-- GitHub: [@githubhandle](
-- LinkedIn: [LinkedIn](https://linkedin.com/in/)
+- GitHub: [@bohaz](https://github.com/bohaz)
+- Twitter: [@Ricardo29115571](https://twitter.com/twitterhandle)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
