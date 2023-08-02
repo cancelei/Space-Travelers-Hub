@@ -72,7 +72,7 @@ Rocket.propTypes = {
   }).isRequired,
 };
 
-function Rockets() {
+function Rockets({ reservedOnly }) {
   const dispatch = useDispatch();
   const rockets = useSelector((state) => state.rockets);
 
@@ -80,13 +80,23 @@ function Rockets() {
     dispatch(fetchRockets());
   }, [dispatch]);
 
+  const filteredRockets = reservedOnly ? rockets.filter((rocket) => rocket.reserved) : rockets;
+
   return (
     <div>
-      {rockets.map((rocket) => (
+      {filteredRockets.map((rocket) => ( // Mostramos solo los cohetes reservados en la tabla
         <Rocket key={rocket.rocket_id} rocket={rocket} />
       ))}
     </div>
   );
 }
+
+Rockets.propTypes = {
+  reservedOnly: PropTypes.bool,
+};
+
+Rockets.defaultProps = {
+  reservedOnly: false,
+};
 
 export default Rockets;
