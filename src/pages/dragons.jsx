@@ -37,11 +37,11 @@ function Dragons() {
         <tbody>
           {dragons.map((dragon) => (
             <tr key={dragon.dragonId}>
-              <td><img src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} width="100" /></td>
+              <td><img src={dragon.flickrImages[0]} alt={`Imagen de ${dragon.dragonName}`} width="250" /></td>
               <td>{dragon.dragonName}</td>
               <td>{dragon.description}</td>
               <td style={{ textAlign: 'center' }}>
-                <Button variant={dragon.reserved ? 'secondary' : 'primary'} onClick={() => handleAction(dragon.dragonId, dragon.reserved)} style={{ width: '120px', margin: '5px', marginTop: '25%' }}>
+                <Button variant={dragon.reserved ? 'secondary' : 'primary'} onClick={() => handleAction(dragon.dragonId, dragon.reserved)} style={{ width: '120px', margin: '5px', marginTop: '175%' }}>
                   {dragon.reserved ? 'Cancel' : 'Reserve'}
                 </Button>
               </td>
