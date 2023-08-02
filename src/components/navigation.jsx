@@ -10,16 +10,16 @@ function NavBar() {
         <h1>Space Travelers Hub</h1>
         <ul>
           <li>
-            <NavLink to="/" activeclassname="active-link">Rockets</NavLink>
+            <NavLink to="/" activeClassName="active-link">Rockets</NavLink>
           </li>
           <li>
-            <NavLink to="/missions" activeclassname="active-link">Missions</NavLink>
+            <NavLink to="/missions" activeClassName="active-link">Missions</NavLink>
           </li>
           <li>
-            <NavLink to="/dragons" activeclassName="active-link">Dragons</NavLink>
+            <NavLink to="/dragons" activeClassName="active-link">Dragons</NavLink>
           </li>
           <li>
-            <NavLink to="/myprofile" activeclassname="active-link">My profile</NavLink>
+            <NavLink to="/myprofile" activeClassName="active-link">My profile</NavLink>
           </li>
 
         </ul>
