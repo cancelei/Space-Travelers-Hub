@@ -21,11 +21,11 @@ const Rocket = ({ rocket }) => {
   };
 
   return (
-    <Card className="rocket-card">
+    <Card className="rocket-card" style={{ border: 'none' }}>
       <Container className="card-container">
         <Row className="row">
           <Col md={4} style={{ marginBottom: '2%' }}>
-            <Card.Img className="rocket-image" variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} />
+            <Card.Img className="rocket-image" variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} style={{ borderRadius: '0' }} />
           </Col>
           <Col md={8}>
             <Card.Body className="rocket-content">
