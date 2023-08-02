@@ -9,13 +9,14 @@ export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () =>
     rocket_name: rocket.name,
     description: rocket.description,
     flickr_images: rocket.flickr_images,
-    reserved: false, // Add the 'reserved' property with initial value set to false
+    reserved: false,
   }));
 });
 
 export const setSelectedRocket = createAsyncThunk('rockets/setSelectedRocket', async (rocketData) => rocketData);
 
-// Rockets slice
+export const cancelReserveRocket = createAsyncThunk('rockets/cancelReserveRocket', async (rocketId) => rocketId);
+
 export const rocketsSlice = createSlice({
   name: 'rockets',
   initialState: [],
@@ -25,9 +26,14 @@ export const rocketsSlice = createSlice({
     builder.addCase(setSelectedRocket.fulfilled, (state, action) => {
       const selectedRocketId = action.payload.rocket_id;
 
-      // Use map() to create a new state with the selected rocket marked as reserved
       // eslint-disable-next-line max-len
       return state.map((rocket) => (rocket.rocket_id === selectedRocketId ? { ...rocket, reserved: true } : rocket));
+    });
+    builder.addCase(cancelReserveRocket.fulfilled, (state, action) => {
+      const rocketId = action.payload;
+
+      // eslint-disable-next-line max-len
+      return state.map((rocket) => (rocket.rocket_id === rocketId ? { ...rocket, reserved: false } : rocket));
     });
   },
 });

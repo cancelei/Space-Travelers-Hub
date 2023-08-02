@@ -4,7 +4,7 @@ import {
   Container, Row, Col, Card, Button,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { fetchRockets, setSelectedRocket } from '../redux/rockets/rocketsSlice';
+import { fetchRockets, setSelectedRocket, cancelReserveRocket } from '../redux/rockets/rocketsSlice';
 
 const Rocket = ({ rocket, onSelectRocket }) => (
   <Card style={{ width: '100%', border: 'none' }}>
@@ -52,10 +52,19 @@ function Rockets() {
     dispatch(setSelectedRocket(rocket));
   };
 
+  const handleCancelReserveRocket = (rocketId) => {
+    dispatch(cancelReserveRocket(rocketId));
+  };
+
   return (
     <div>
       {rockets.map((rocket) => (
-        <Rocket key={rocket.rocket_id} rocket={rocket} onSelectRocket={handleSelectRocket} />
+        <Rocket
+          key={rocket.rocket_id}
+          rocket={rocket}
+          onSelectRocket={handleSelectRocket}
+          onCancelReserveRocket={handleCancelReserveRocket}
+        />
       ))}
     </div>
   );
