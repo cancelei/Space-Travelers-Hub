@@ -24,6 +24,7 @@ function Dragons() {
 
   return (
     <Container>
+      <h1>Dragons</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -40,6 +41,7 @@ function Dragons() {
               <td>{dragon.dragonName}</td>
               <td>{dragon.description}</td>
               <td style={{ textAlign: 'center' }}>
+                {dragon.reserved ? <p style={{ color: 'green' }}>Reserved</p> : null}
                 <Button variant={dragon.reserved ? 'secondary' : 'primary'} onClick={() => handleAction(dragon.dragonId, dragon.reserved)} style={{ width: '120px', margin: '5px', marginTop: '175%' }}>
                   {dragon.reserved ? 'Cancel' : 'Reserve'}
                 </Button>
