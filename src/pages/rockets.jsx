@@ -29,7 +29,7 @@ const Rocket = ({ rocket }) => {
             <Card.Body>
               <Card.Title>{rocket.rocket_name}</Card.Title>
               <Card.Text>
-                {rocket.reserved && <span className="btn btn-primary" style={{ padding: '2px 8px', marginRight: '5px' }}>Reserved</span>}
+                {rocket.reserved && <span className="btn btn-primary" style={{ padding: '1px 1px', marginRight: '5px' }}>Reserved</span>}
                 {rocket.description}
               </Card.Text>
               {rocket.reserved ? (
