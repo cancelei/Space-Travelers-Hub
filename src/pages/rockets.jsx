@@ -25,7 +25,7 @@ const Rocket = ({ rocket }) => {
       <Container className="card-container">
         <Row className="row">
           <Col md={4} style={{ marginBottom: '2%' }}>
-            <Card.Img className="rocket-image" variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} style={{ borderRadius: '0' }} />
+            <Card.Img className="rocket-image" variant="top" src={rocket.flickr_images[0]} alt={`Imagen de ${rocket.rocket_name}`} style={{ borderRadius: '0' }} data-testid="rocket-image" />
           </Col>
           <Col md={8}>
             <Card.Body className="rocket-content">
@@ -50,6 +50,7 @@ const Rocket = ({ rocket }) => {
                 <Button
                   variant="primary"
                   onClick={handleReserveRocket}
+                  data-testid="reserve-button"
                 >
                   Reserve Rocket
                 </Button>
@@ -77,8 +78,10 @@ function Rockets() {
   const rockets = useSelector((state) => state.rockets);
 
   useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
+    if (rockets.length === 0) {
+      dispatch(fetchRockets());
+    }
+  }, [dispatch, rockets]);
 
   return (
     <div>
@@ -88,5 +91,5 @@ function Rockets() {
     </div>
   );
 }
-
+export { Rocket };
 export default Rockets;

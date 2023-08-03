@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-// rocketsSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
