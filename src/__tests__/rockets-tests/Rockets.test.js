@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rocketsReducer from '../../redux/rockets/rocketsSlice';
-import Rockets, { Rocket } from '../../pages/Rockets';
+import Rockets, { Rocket } from '../../pages/rockets';
 
 const mockRocket = {
   rocket_id: '1',
