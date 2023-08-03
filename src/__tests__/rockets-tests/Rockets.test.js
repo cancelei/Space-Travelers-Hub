@@ -38,7 +38,6 @@ describe('<Rocket /> component', () => {
 
     const button = screen.getByTestId('reserve-button');
     fireEvent.click(button);
-    // Puedes añadir aquí expectativas adicionales según lo que suceda en tu aplicación al reservar
   });
 });
 
