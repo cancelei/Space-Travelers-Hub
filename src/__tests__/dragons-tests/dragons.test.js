@@ -22,7 +22,6 @@ describe('dragonsSlice', () => {
       {
         id: '1', name: 'Dragon 1', description: 'desc1', flickr_images: ['image1'], reserved: false,
       },
-      // ... add more dragons as needed
     ];
 
     axios.get.mockResolvedValueOnce({ data: mockData });
@@ -31,7 +30,6 @@ describe('dragonsSlice', () => {
 
     expect(store.getState().dragons.list[0].dragonId).toEqual('1');
     expect(store.getState().dragons.list[0].dragonName).toEqual('Dragon 1');
-    // ... continue checking other properties
   });
 
   test('reserves a dragon', () => {
@@ -55,7 +53,6 @@ describe('Dragons Component', () => {
     {
       id: '1', name: 'Dragon 1', description: 'desc1', flickr_images: ['image1'], reserved: false,
     },
-    // ... add more dragons as needed
   ];
 
   beforeEach(() => {
@@ -90,23 +87,19 @@ describe('Dragons Component', () => {
   });
 
   test('cancels a dragon reservation', async () => {
-    // Renderiza el componente
     render(
       <Provider store={store}>
         <Dragons />
       </Provider>,
     );
 
-    // Encuentra y haz clic en el botón de reserva
     const reserveButton = await screen.findByText('Reserve Dragon');
     fireEvent.click(reserveButton);
 
-    // Espera a que la reserva sea exitosa (o realiza cualquier otra comprobación necesaria)
     await waitFor(() => {
       expect(store.getState().dragons.list[0].reserved).toBe(true);
     });
 
-    // Encuentra y haz clic en el botón de cancelar reserva
     const cancelButton = await screen.findByText('Cancel Reservation');
     fireEvent.click(cancelButton);
 
