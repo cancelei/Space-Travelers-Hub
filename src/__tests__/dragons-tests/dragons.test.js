@@ -1,74 +1,117 @@
-import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import axios from 'axios';
+import '@testing-library/jest-dom/extend-expect';
+import {
+  render, screen, waitFor, fireEvent,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import Dragons, { Dragon } from '../../pages/dragons';
-import { reserveDragon, cancelDragonReservation, dragonsSlice } from '../../redux/dragons/dragonsSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import dragonsReducer, { fetchDragons, reserveDragon, cancelDragonReservation } from '../../redux/dragons/dragonsSlice';
+import Dragons from '../../pages/dragons';
 
-// Mock the store
-const mockStore = configureMockStore();
-const store = mockStore({
-  dragons: {
-    list: [
+jest.mock('axios');
+
+describe('dragonsSlice', () => {
+  let store;
+
+  beforeEach(() => {
+    store = configureStore({ reducer: { dragons: dragonsReducer } });
+  });
+
+  test('fetches dragons from API and updates state', async () => {
+    const mockData = [
       {
-        dragonId: '1',
-        dragonName: 'Dragon 1',
-        description: 'Test Dragon',
-        flickrImages: ['image_url'],
-        reserved: false,
+        id: '1', name: 'Dragon 1', description: 'desc1', flickr_images: ['image1'], reserved: false,
       },
-    ],
-  },
-});
+      // ... add more dragons as needed
+    ];
 
-// Test the Dragon component
-describe('Dragon Component', () => {
-  const dragon = {
-    dragonId: '1',
-    dragonName: 'Dragon 1',
-    description: 'Test Dragon',
-    flickrImages: ['image_url'],
-    reserved: false,
-  };
+    axios.get.mockResolvedValueOnce({ data: mockData });
 
-  it('should render the Dragon component', () => {
-    render(<Provider store={store}><Dragon dragon={dragon} /></Provider>);
-    expect(screen.getByText('Dragon 1')).toBeInTheDocument();
+    await store.dispatch(fetchDragons());
+
+    expect(store.getState().dragons.list[0].dragonId).toEqual('1');
+    expect(store.getState().dragons.list[0].dragonName).toEqual('Dragon 1');
+    // ... continue checking other properties
   });
 
-  it('should handle Reserve Dragon button click', () => {
-    render(<Provider store={store}><Dragon dragon={dragon} /></Provider>);
-    fireEvent.click(screen.getByText('Reserve Dragon'));
-    // Verify button text change or other UI changes after reservation
-  });
-
-  it('should handle Cancel Reservation button click', () => {
-    dragon.reserved = true;
-    render(<Provider store={store}><Dragon dragon={dragon} /></Provider>);
-    fireEvent.click(screen.getByText('Cancel Reservation'));
-    // Verify button text change or other UI changes after canceling reservation
-  });
-});
-
-// Test the Dragons container component
-describe('Dragons Container', () => {
-  it('should render Dragons container', () => {
-    render(<Provider store={store}><Dragons /></Provider>);
-    expect(screen.getByText('Dragon 1')).toBeInTheDocument();
-  });
-});
-
-// Test the dragons slice
-describe('Dragons Slice', () => {
-  it('should handle reserveDragon action', () => {
+  test('reserves a dragon', () => {
     const initialState = { list: [{ dragonId: '1', reserved: false }] };
-    const state = dragonsSlice.reducer(initialState, reserveDragon('1'));
-    expect(state.list[0].reserved).toBeTruthy();
+    const action = reserveDragon('1');
+    const state = dragonsReducer(initialState, action);
+    expect(state.list[0].reserved).toBe(true);
   });
 
-  it('should handle cancelDragonReservation action', () => {
+  test('cancels dragon reservation', () => {
     const initialState = { list: [{ dragonId: '1', reserved: true }] };
-    const state = dragonsSlice.reducer(initialState, cancelDragonReservation('1'));
-    expect(state.list[0].reserved).toBeFalsy();
+    const action = cancelDragonReservation('1');
+    const state = dragonsReducer(initialState, action);
+    expect(state.list[0].reserved).toBe(false);
+  });
+});
+
+describe('Dragons Component', () => {
+  let store;
+  const mockData = [
+    {
+      id: '1', name: 'Dragon 1', description: 'desc1', flickr_images: ['image1'], reserved: false,
+    },
+    // ... add more dragons as needed
+  ];
+
+  beforeEach(() => {
+    store = configureStore({ reducer: { dragons: dragonsReducer } });
+    axios.get.mockResolvedValueOnce({ data: mockData });
+  });
+
+  test('renders Dragons component', async () => {
+    render(
+      <Provider store={store}>
+        <Dragons />
+      </Provider>,
+    );
+
+    const dragonCard = await screen.findByText('Dragon 1');
+    expect(dragonCard).toBeInTheDocument();
+  });
+
+  test('reserves a dragon', async () => {
+    render(
+      <Provider store={store}>
+        <Dragons />
+      </Provider>,
+    );
+
+    const reserveButton = await screen.findByText('Reserve Dragon');
+    fireEvent.click(reserveButton);
+
+    await waitFor(() => {
+      expect(store.getState().dragons.list[0].reserved).toBe(true);
+    });
+  });
+
+  test('cancels a dragon reservation', async () => {
+    // Renderiza el componente
+    render(
+      <Provider store={store}>
+        <Dragons />
+      </Provider>,
+    );
+
+    // Encuentra y haz clic en el botón de reserva
+    const reserveButton = await screen.findByText('Reserve Dragon');
+    fireEvent.click(reserveButton);
+
+    // Espera a que la reserva sea exitosa (o realiza cualquier otra comprobación necesaria)
+    await waitFor(() => {
+      expect(store.getState().dragons.list[0].reserved).toBe(true);
+    });
+
+    // Encuentra y haz clic en el botón de cancelar reserva
+    const cancelButton = await screen.findByText('Cancel Reservation');
+    fireEvent.click(cancelButton);
+
+    await waitFor(() => {
+      expect(store.getState().dragons.list[0].reserved).toBe(false);
+    });
   });
 });
