@@ -2,6 +2,9 @@
 <a name="readme-top"></a>
 
 <div align="center">
+   <img src="./src/assets/rc-softdev-banner-doodles-soft.PNG" alt="Rudi Carrillo logo" height="auto" />
+  <br/>
+
   <h3><b> 🚀 SPACE TRAVELER'S HUB 🚀 </b></h3>
 
 </div>
@@ -12,6 +15,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -58,6 +62,12 @@ Web Page connected with the real live data from the SpaceX API, to provide comme
 - User can remove missions from their list of missions.
 - User can add dragons to their list of dragons.
 - User can remove dragons from their list of dragons.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+[Click here](https://space-travelers-byrudi.netlify.app/) to see the project's deployment.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,11 +144,8 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Implement LocalStorage to save user's data.
-- Implement a login system.
-- Implement a user profile page.
-- Implement a user dashboard.
-- Implement a user's past and future space travels.
+- Mobile version
+- New page design
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
