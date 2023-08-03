@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import {
+  render, screen, waitFor,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import Missions from '../../pages/missions'; // Make sure this path is correct
 import missionsReducer from '../../redux/missions/missionsSlice';
@@ -51,24 +52,23 @@ describe('Missions', () => {
   });
 
   test('dispatches fetchMissions action when mounted and missions array is empty', async () => {
-    await act(async () => {
-      render(
-        <Provider store={store}>
-          <Missions />
-        </Provider>,
-      );
-    });
+    render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>,
+    );
     await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
   });
 
   test('renders MissionList component when not loading', async () => {
-    await act(async () => {
-      render(
-        <Provider store={store}>
-          <Missions />
-        </Provider>,
-      );
-    });
-    await waitFor(() => expect(screen.getByText(mockMissions[0].mission_name)).toBeInTheDocument()); // Make sure the MissionList component renders this text
+    render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>,
+    );
+    const missionName1 = await screen.findByText(mockMissions[0].mission_name);
+    const missionName2 = await screen.findByText(mockMissions[1].mission_name);
+    expect(missionName1).toBeInTheDocument();
+    expect(missionName2).toBeInTheDocument();
   });
 });
