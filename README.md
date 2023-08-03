@@ -2,7 +2,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>Bookstore</b></h3>
+  <h3><b> 🚀 SPACE TRAVELER'S HUB 🚀 </b></h3>
 
 </div>
 
@@ -12,7 +12,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -28,10 +27,13 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 React/Redux Bookstore<a name="about-project"></a>
-This is react redux project that includes a bookstore that stores the progress of an user's books. It uses redux to manage the state.
+# 📖 SPACE TRAVELER'S HUB<a name="about-project"></a>
+Web Page connected with the real live data from the SpaceX API, to provide commercial and scientific space travel services, users can book rockets and join selected space missions.
 
-## 🛠 Built With Love and Passion<a name="built-with"></a>
+## 🛠 Built With:<a name="built-with"></a>
+- React
+- Redux
+- Space X - API
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -47,70 +49,60 @@ This is react redux project that includes a bookstore that stores the progress o
   </ul>
 </details>
 
-<!-- <details>
-  <summary>Server</summary>
-  <ul>
-    <li>N/A</li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li>N/A</li>
-  </ul>
-</details> -->
-
 ### Key Features <a name="key-features"></a>
 
-Add Features here
+- UI Layout with Logo and API data in text and image format.
+- User can add rockets to their list of rockets.
+- User can remove rockets from their list of rockets.
+- User can add missions to their list of missions.
+- User can remove missions from their list of missions.
+- User can add dragons to their list of dragons.
+- User can remove dragons from their list of dragons.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 💻 Getting Started <a name="getting-started"></a>
+<!-- GETTING STARTED -->
 
+## 💻 Getting Started <a name="getting-started"></a>
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
-
-In order to run this project you need:
-
-Download Project Files from github.
+Before you proceed, ensure that you have the following installed on your machine:
+- Node.js (v12 or above)
+- npm (Node Package Manager)
 
 ### Setup
-
 Clone this repository to your desired folder:
+
+```sh
+  git clone git@github.com:cancelei/Space-Travelers-Hub.git
+```
 
 ### Install
 
-Install Node Package by running:
+Install the project dependencies with:
 
-- npm install
+```sh
+  npm install
+```
 
 ### Usage
 
-- In other to use the repo you either to create a branch to create new features.
-- But in order to run the project use the commands below:
-  - npm run build (It will create a production ready file)
-  - npm start (It will run the server on your local machine)
+To run the project, execute the following command:
 
-### Run Linters (Testing)
+```sh
+  npm run build
+```
 
-I have added Linters different kinds of Linters to help avoid typos and ensure the best practices of the code base.
-So while using this repository if you need to check your work no matter if you have worked on HTML or CSS, or even JS you can use the commands below.
+### Run tests
 
-- To run the linter test on index.html or any HTML file. Use the below command:
-npx hint . 
+To run tests, run the following command:
+```sh
+  npm start
+```
+- Open your web browser and visit http://localhost:8080.
+- You should now see the Space Traveler's Hub application running in your browser.
 
--To run linter test on Stylesheets (CSS or sass). Use the below command:
-npx Stylelint "**/*.{css,scss}"
-
-- To run linter test on ES Lint (JS). Use the below command:
-npx eslint .
-
-<!-- ### Deployment
-
-N/A -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,7 +114,19 @@ N/A -->
 - LinkedIn: [LinkedIn](https://linkedin.com/in/gbannwart)
 
 
-Add Author here
+👤 **Rudi Carrillo**
+
+- GitHub: [@rudicarrilloypr](https://github.com/rudicarrilloypr)
+- Twitter: [@__rudicarrillo](https://twitter.com/__rudicarrillo)
+- LinkedIn: [Rudi Carrillo](https://www.linkedin.com/in/rudi-carrillo/)
+- Instagram: [@__rudicarrillo](https://www.instagram.com/_rudicarrillo/)
+
+👤 **Ricardo Martínez**
+
+- GitHub: [@bohaz](https://github.com/bohaz)
+- Twitter: [@Ricardo29115571](https://twitter.com/twitterhandle)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,13 +134,17 @@ Add Author here
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- (Add future here)
+- Implement LocalStorage to save user's data.
+- Implement a login system.
+- Implement a user profile page.
+- Implement a user dashboard.
+- Implement a user's past and future space travels.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome! Please consider this issue link: [Project Issues](https://github.com/cancelei/bookstore/issues)
+Contributions, issues, and feature requests are welcome! Please consider this issue link: [Project Issues](https://github.com/cancelei/Space-Travelers-Hub/issues)
 
 ## ⭐️ Show your support <a name="support"></a>
 
