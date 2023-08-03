@@ -91,5 +91,5 @@ function Rockets() {
     </div>
   );
 }
-
+export { Rocket };
 export default Rockets;

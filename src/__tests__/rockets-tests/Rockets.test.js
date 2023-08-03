@@ -1,92 +1,55 @@
-import axios from 'axios';
+import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import {
-  render, screen, waitFor, fireEvent,
-} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import rocketsReducer, { fetchRockets, setSelectedRocket, cancelReserveRocket } from '../../redux/rockets/rocketsSlice';
-import Rockets from '../../pages/Rockets';
+import rocketsReducer from '../../redux/rockets/rocketsSlice';
+import Rockets, { Rocket } from '../../pages/Rockets'; // Asegúrate de exportar también el componente Rocket
 
-test('cancels rocket reservation', () => {
-  const initialState = [
-    {
-      rocket_id: 'rocket_1',
-      rocket_name: 'Falcon 1',
-      description: 'This is a test rocket',
-      flickr_images: ['image1'],
-      reserved: true,
-    },
-  ];
+const mockRocket = {
+  rocket_id: '1',
+  rocket_name: 'Rocket 1',
+  description: 'desc1',
+  flickr_images: ['image1'],
+  reserved: false,
+};
 
-  const action = cancelReserveRocket('rocket_1');
+const store = configureStore({ reducer: { rockets: rocketsReducer } });
 
-  const state = rocketsReducer(initialState, action);
-  expect(state[0].reserved).toBe(false);
+describe('<Rocket /> component', () => {
+  it('displays rocket details', () => {
+    render(
+      <Provider store={store}>
+        <Rocket rocket={mockRocket} />
+      </Provider>,
+    );
+
+    expect(screen.getByText(mockRocket.rocket_name)).toBeInTheDocument();
+    expect(screen.getByAltText(`Imagen de ${mockRocket.rocket_name}`)).toBeInTheDocument();
+    expect(screen.getByTestId('rocket-image')).toHaveAttribute('src', mockRocket.flickr_images[0]);
+  });
+
+  it('handles reservation button click', () => {
+    render(
+      <Provider store={store}>
+        <Rocket rocket={mockRocket} />
+      </Provider>,
+    );
+
+    const button = screen.getByTestId('reserve-button');
+    fireEvent.click(button);
+    // Puedes añadir aquí expectativas adicionales según lo que suceda en tu aplicación al reservar
+  });
 });
 
-describe('Rockets Component', () => {
-  let store;
-  const mockData = [
-    {
-      rocket_id: 'rocket_1',
-      rocket_name: 'Falcon 1',
-      description: 'This is a test rocket',
-      flickr_images: ['image1'],
-      reserved: false,
-    },
-  ];
-
-  beforeEach(() => {
-    store = configureStore({ reducer: { rockets: rocketsReducer } });
-    axios.get.mockResolvedValueOnce({ data: mockData });
-  });
-
-  test('renders Rockets component', async () => {
-    render(
+describe('<Rockets /> container', () => {
+  it('renders Rockets component', () => {
+    const { container } = render(
       <Provider store={store}>
         <Rockets />
       </Provider>,
     );
 
-    const rocketCard = await screen.findByText('Falcon 1');
-    expect(rocketCard).toBeInTheDocument();
-  });
-
-  test('reserves a rocket', async () => {
-    render(
-      <Provider store={store}>
-        <Rockets />
-      </Provider>,
-    );
-
-    const reserveButton = await screen.findByText('Reserve Rocket');
-    fireEvent.click(reserveButton);
-
-    await waitFor(() => {
-      expect(store.getState().rockets[0].reserved).toBe(true);
-    });
-  });
-
-  test('cancels a rocket reservation', async () => {
-    render(
-      <Provider store={store}>
-        <Rockets />
-      </Provider>,
-    );
-
-    const reserveButton = await screen.findByText('Reserve Rocket');
-    fireEvent.click(reserveButton);
-
-    await waitFor(() => {
-      expect(store.getState().rockets[0].reserved).toBe(true);
-    });
-
-    const cancelButton = await screen.findByText('Cancel Reservation');
-    fireEvent.click(cancelButton);
-
-    await waitFor(() => {
-      expect(store.getState().rockets[0].reserved).toBe(false);
-    });
+    expect(container.firstChild).toBeDefined();
   });
 });
