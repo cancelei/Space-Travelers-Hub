@@ -2,6 +2,7 @@
   "name": "space-travelers-hub",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cancelei.github.io/Space-Travelers-Hub/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/user-event": "^13.5.0",
@@ -23,7 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-staged": "lint-staged",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

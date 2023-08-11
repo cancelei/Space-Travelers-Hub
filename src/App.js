@@ -10,7 +10,7 @@ import Dragons from './pages/dragons';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Space-Travelers-Hub">
       <NavBar />
       <Routes>
         <Route path="/" element={<Rockets />} />
