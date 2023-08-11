@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Space-Travelers-Hub/static/css/main.216fcb10.css",
+    "main.js": "/Space-Travelers-Hub/static/js/main.5b398dcf.js",
+    "index.html": "/Space-Travelers-Hub/index.html",
+    "main.216fcb10.css.map": "/Space-Travelers-Hub/static/css/main.216fcb10.css.map",
+    "main.5b398dcf.js.map": "/Space-Travelers-Hub/static/js/main.5b398dcf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.216fcb10.css",
+    "static/js/main.5b398dcf.js"
+  ]
+}
